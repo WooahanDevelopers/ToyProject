@@ -15,29 +15,26 @@ import android.widget.TextView;
  */
 public class ProfileFragment extends Fragment {
 
-    User user;
-
     TextView tv_name;
     TextView tv_age;
     TextView tv_major;
+
+    String name, age, major;
+
 
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public void setUser(User user){
-        Log.e("ProfileFragment", "setUser");
-        this.user = user;
-    }
-
-    public User getUser(){
-        Log.e("ProfileFragment", "getUser");
-        return user;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle b;
+        b =  getArguments();
+        name = b.getString("name");
+        age = b.getString("age");
+        major = b.getString("major");
+
     }
 
     @Override
@@ -51,9 +48,9 @@ public class ProfileFragment extends Fragment {
         tv_age = (TextView)view.findViewById(R.id.tv_age);
         tv_major = (TextView)view.findViewById(R.id.tv_major);
 
-        tv_name.setText(getUser().getUserName());
-        tv_age.setText(getUser().getUserAge());
-        tv_major.setText(getUser().getUserMajor());
+        tv_name.setText(name);
+        tv_age.setText(age);
+        tv_major.setText(major);
 
         return view;
     }

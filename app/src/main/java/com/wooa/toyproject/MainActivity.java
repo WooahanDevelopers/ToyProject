@@ -31,10 +31,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Act
         if ( getSupportFragmentManager().findFragmentByTag("login") != null ) {
             getSupportFragmentManager().beginTransaction().hide(loginFragment).commit();
             Bundle b = new Bundle();
-            b.putString("FF","Ff");
+            b.putString("name", user.getUserName());
+            b.putString("age", user.getUserAge());
+            b.putString("major", user.getUserMajor());
             profileFragment.setArguments(b);
             getSupportFragmentManager().beginTransaction().add(R.id.container, profileFragment, "profile").commit();
-            profileFragment.setUser(user);
         }
 
     }
